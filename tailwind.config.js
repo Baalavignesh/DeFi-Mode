@@ -12,6 +12,7 @@ export default {
       'custom-grey': '#22272E',
       'custom-white':'#f2f2f2',
       'custom-black': '#14181C',
+      'custom-red':'#FF1200'
     },
     extend: {},
 
