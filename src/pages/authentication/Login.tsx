@@ -37,8 +37,8 @@ const Login = () => {
         await window.ethereum?.request({
           method: "wallet_addEthereumChain",
           params: [{
-            chainName: "Mode Testnet", chainId: chainId, 
-            blockExplorerUrls: ['https://bridge.mode.network/'],
+            chainName: "Mode Sepolia", chainId: chainId, 
+            blockExplorerUrls: ['https://sepolia.explorer.mode.network/'],
             rpcUrls: ['https://sepolia.mode.network/'],
              nativeCurrency: {
               name: "Ethereum",
