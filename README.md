@@ -1,8 +1,8 @@
-ModeStart - A Kickstart for the people, of the people, by the people.
+## ModeStart - A Kickstart for the people, of the people, by the people.
 
 ModeStart, the next evolution in crowdfunding. Built on the ModeTestnet with Sepolia, our platform leverages the best of blockchain technology to bring your ideas and investments to life. Security and simplicity go hand in hand with MetaMask wallet authentication. Engage with ModeStart seamlessly, knowing your identity and transactions are protected every step of the way.
 
-ModeStart was built with a combination of vision, dedication, and cutting-edge technology. We started by mapping out the user journey, ensuring that both project creators and backers have a smooth and intuitive experience. Our smart contracts were then meticulously crafted using Solidity and tested extensively in Remix to ensure maximum security and efficiency. React was chosen for the front end to create an engaging and responsive interface that reflects the innovation of the projects we aim to support.
+Built with a combination of vision, dedication, and cutting-edge technology. We started by mapping out the user journey, ensuring that both project creators and backers have a smooth and intuitive experience. Our smart contracts were then meticulously crafted using Solidity and tested extensively in Remix to ensure maximum security and efficiency. React was chosen for the front end to create an engaging and responsive interface that reflects the innovation of the projects we aim to support.
 
 Features
 Authentication: The project includes a feature for user authentication, as seen in the authSlice.ts file in the src/features/auth/ directory. The accessToken symbol is likely used for storing the user's authentication token.
@@ -15,17 +15,17 @@ Constants and Assets: The `src/constants/` directory likely contains constant va
 
 Redux Store: The store.ts file in the src/store/ directory is likely where the Redux store is configured.
 
-Installation
+## Installation
 To install the dependencies for this project, run the following command in your terminal:
 
 `npm install`
 
-Running the Project
+## Running the Project
 To start the project, run the following command in your terminal:
 
 `npm run dev`
 
-Contract
+## Contract
 
 The Contract for this project is present in `contract.sol`. The generated abi is present in `src/assets/abi.json`
 
