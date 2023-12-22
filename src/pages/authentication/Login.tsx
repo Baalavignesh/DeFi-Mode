@@ -34,7 +34,7 @@ const Login = () => {
 
       <Fade in={true} timeout={1000}>
         <div className="flex flex-col justify-center items-center h-screen gap-8">
-
+    
 
           <h1>Welcome to ModeStart</h1>
           <button

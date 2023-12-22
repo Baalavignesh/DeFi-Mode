@@ -23,7 +23,7 @@ const withAuth = (WrappedComponent: React.ComponentType<any>) => {
           const diff = Math.random() * 10;
           return Math.min(oldProgress + diff, 100);
         });
-      }, 150);
+      }, 10);
   
       return () => {
         clearInterval(timer);
