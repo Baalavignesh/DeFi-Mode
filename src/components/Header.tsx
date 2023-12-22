@@ -1,22 +1,12 @@
-import { useDispatch } from "react-redux";
+
 import { useNavigate } from "react-router-dom";
-import { setTokens } from "../features/auth/authSlice";
+
 
 const Header = () => {
 
-  const dispatch = useDispatch();
   const navigate = useNavigate();
   
-  const handleLogout = () => {
-    dispatch(
-      setTokens({
-        accessToken: "",
-        refreshToken: "",
-        idToken: "",
-      })
-    );
-    navigate("/");
-  };
+
 
   return (
     <div className="w-full bg-custom-grey p-4 flex justify-between items-center pl-10 pr-10">

@@ -14,10 +14,7 @@ const Dashboard = () => {
   const [currentAd, setCurrentAd] = useState("Hello World!");
  const [currentBid, setCurrentBid] = useState(0);
  const [advertiser, setAdvertiser] = useState("0x0");
- const [newAd, setNewAd] = useState("");
- const [bidAmount, setBidAmount] = useState("");
  const [provider, setProvider] = useState<any>(null);
- const [status, setStatus] = useState("");
  const contract = new ethers.Contract(contractAddress, abi, provider);
 
  async function fetchCurrentAd() {
@@ -29,6 +26,7 @@ const Dashboard = () => {
       setCurrentAd(adData[0]);
       setAdvertiser(adData[1]);
       setCurrentBid(parseFloat(ethers.formatEther(adData[2])));
+      console.log(currentAd,currentBid,advertiser)
       console.log(adData[0]);
   } catch (error) {
     console.error('Error fetching current ad:', error);
