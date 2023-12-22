@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import Header from "../../components/Header";
 import { useLocation } from "react-router-dom";
 import { Divider, Fade } from "@mui/material";
@@ -10,12 +10,11 @@ interface IDonarInformation {
 }
 const CoinPage = () => {
   const { state } = useLocation();
+  const scrollRef:any = useRef(null);
 
-  useEffect(() => {
-    console.log(state);
-  }, []);
 
-  const donorNames = ["John", "Anthony", "Emily", "Sarah", "Michael", "Ram", "Arul Raj", "Eren Yeagar"]; 
+
+  const donorNames = ["John", "Anthony", "Emily", "Sarah", "Michael", "Ram", "Arul Raj", "Eren Yeagar", "Randy John"]; 
   const donorAddresses = [
     "1J6PYEzr4CUoGbnXrELyHszoTSz3wCsCaj",
     "0x4e6CF0ed2c8Abf2316f3B7f2E4e4A989",
@@ -28,10 +27,8 @@ const CoinPage = () => {
     "1J6PYEzr4CUoGbnXrELyHszoTSz3wCsCaj",
   ];
 
-  // State to keep track of all donations
   const [donations, setDonations] = useState<IDonarInformation[]>([]);
 
-  // Effect to simulate donations
   useEffect(() => {
     let intervalId: any;
 
@@ -47,14 +44,27 @@ const CoinPage = () => {
 
         setDonations((donations) => [...donations, newDonation]);
       }, 2000);
+
+      if (scrollRef.current) {
+        const { scrollHeight, clientHeight } = scrollRef.current;
+        scrollRef.current.scrollTo(0, scrollHeight - clientHeight);
+      }
     } else {
-      // Clear the interval once we've reached the number of names available
       clearInterval(intervalId);
     }
 
-    // Cleanup the interval on component unmount
     return () => clearInterval(intervalId);
   }, [donations.length]);
+
+  useEffect(() => {
+    console.log(state);
+  }, []);
+
+  useEffect(() => {
+
+  }, [donations]);
+
+
 
   let [progressStyle, setProgressStyle] = useState<any>();
   let [fundingProgress, setFundingProgress] = useState<any>();
@@ -69,9 +79,12 @@ const CoinPage = () => {
 
   return (
     <div>
+        
       <Header />
+      <Fade in={true} timeout={1000}>
+
       <div className="ml-24 mr-24">
-        <div className="flex min-h-screen">
+        <div className="flex ">
           <div className="w-2/5 bg-custom-grey border-r-[1px] border-custom-black rounded-l-lg flex flex-col mt-12 justify-evenly items-center h-[600px]">
             <h1 className="mt-12">{state.name}</h1>
             <p className="font-thin">{state.token}</p>
@@ -80,7 +93,7 @@ const CoinPage = () => {
               src={state.logo}
               className="w-96 h-96 rounded-full p-4 m-4 animate-pulse"
             ></img>
-            <div className="bg-gray-200 rounded-full bg-custom-black w-10/12 m-6">
+            <div className="bg-gray-200 rounded-full bg-custom-black w-10/12 mb-12">
               <div
                 className="bg-primary text-xs font-medium text-custom-black text-center p-0.5 leading-none rounded-full w-10/12"
                 style={progressStyle}
@@ -90,10 +103,10 @@ const CoinPage = () => {
             </div>
           </div>
           <div className="w-2/3 bg-custom-grey mt-12 rounded-r-lg h-[600px]">
-            <div className="p-12 flex flex-col h-full justify-between">
+            <div className="p-12 pb-8 flex flex-col h-full justify-between">
               <h4>{state.description}</h4>
 
-              <div className="bg-custom-black rounded-3xl p-4 m-6 overflow-scroll scroll-smooth scroll-m-0 overflow-x-hidden">
+              <div className="bg-custom-black rounded-md p-4 m-6 overflow-scroll scroll-smooth scroll-m-0 overflow-x-hidden h-full" ref={scrollRef}>
                 {donations.map((donation, index) => (
                   <div>
                     <Fade in={true} timeout={1000}>
@@ -109,6 +122,7 @@ const CoinPage = () => {
                   </div>
                 ))}
               </div>
+              <button className="bg-primary p-4 text-custom-black rounded-md">Contribute Now</button>
             </div>
           </div>
         </div>
@@ -131,6 +145,7 @@ const CoinPage = () => {
           </h4>
         </div>
       </div>
+      </Fade>
     </div>
   );
 };

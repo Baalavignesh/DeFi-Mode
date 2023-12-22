@@ -2,6 +2,11 @@ import ecochain from "../assets/1.png";
 import quantumpulse from "../assets/2.png";
 import skyledger from "../assets/3.png";
 
+
+import nebula from "../assets/4.png";
+import bit from "../assets/5.png";
+import cryptic from "../assets/6.png";
+
 let allCoins = [
   {
     name: "EcoChain",
@@ -41,4 +46,39 @@ let allCoins = [
   },
 ];
 
-export default allCoins;
+
+let newCoins = [
+    {
+        name: "NebulaNet",
+        logo: nebula, 
+        description: "NebulaNet is pioneering a constellation of decentralized services, offering a secure and scalable infrastructure for next-generation internet applications.",
+        longDescription: "NebulaNet is at the forefront of decentralized internet services, offering a robust and scalable platform that supports a wide range of applications. Its technology is designed to create a more secure, private, and efficient online environment, enabling users to navigate the digital space with confidence. By leveraging advanced cryptography and peer-to-peer technology, NebulaNet is building a future where online interactions are more secure, efficient, and user-centric.",
+        goal_funds: 100000,
+        current_funds: 79500,
+        token: "NEB",
+        deadline: "12th February 2024"
+    },
+    {
+        name: "BitTorrential",
+        logo: bit,
+        description: "BitTorrential is redefining data sharing with a decentralized protocol that accelerates transfer speeds and ensures data integrity.",
+        longDescription: "BitTorrential leverages the power of blockchain to revolutionize data sharing and storage. Its decentralized protocol not only accelerates file transfer speeds but also enhances security and data integrity. With a focus on creating a more robust and efficient network, BitTorrential provides a solution that is both user-friendly and powerful, empowering users to share and store data with unprecedented ease and reliability.",
+        goal_funds: 100000,
+        current_funds: 89000,
+        token: "BTT",
+        deadline: "12th February 2024"
+    },
+    {
+        name: "CrypticCore",
+        logo: cryptic,
+        description: "CrypticCore is dedicated to building a more transparent and equitable financial ecosystem, leveraging blockchain to empower users worldwide.",
+        longDescription: "CrypticCore is a revolutionary platform that aims to democratize finance through blockchain technology. It is designed to provide a transparent, equitable, and secure financial ecosystem where users have control over their assets and can engage in transactions with confidence. By prioritizing user empowerment, security, and transparency, CrypticCore is setting new standards for what a decentralized financial system can achieve, offering tools and services that make financial freedom accessible to everyone.",
+        goal_funds: 100000,
+        current_funds: 94700,
+        token: "CRC",
+        deadline: "12th February 2024"
+    }
+]
+
+
+export {allCoins, newCoins} ;
