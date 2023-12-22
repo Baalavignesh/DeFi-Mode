@@ -1,12 +1,10 @@
 import { useEffect,useState } from "react";
-import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { Fade, Grow } from "@mui/material";
 import Header from "../../components/Header";
 import {allCoins, newCoins} from "../../constants/coin_info";
 import {ethers} from "ethers";
 import abi from '../../constants/abi.json'
-import { useSDK } from "@metamask/sdk-react";
 
 const contractAddress = "0x1EcEEcB17762FaaCf67276b52B00c456017762e3";
 

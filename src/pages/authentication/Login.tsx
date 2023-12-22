@@ -2,7 +2,7 @@ import { useDispatch } from "react-redux";
 import { setTokens } from "../../features/auth/authSlice";
 import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
-import { Box, Fade, LinearProgress } from "@mui/material";
+import { Fade } from "@mui/material";
 import { useSDK } from "@metamask/sdk-react";
 
 const Login = () => {
