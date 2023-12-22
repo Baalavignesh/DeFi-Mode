@@ -155,9 +155,21 @@ useEffect(() => {
                 );
               })}
             </div>
+            
+              
           </div>
+          <footer className="bg-primary  w-full">
+              <div x-data="{}"
+    x-init="$nextTick(() => {
+        let ul = $refs.logos;
+        ul.insertAdjacentHTML('afterend', ul.outerHTML);
+        ul.nextSibling.setAttribute('aria-hidden', 'true');
+    })" className="text-custom-black animate-infinite-scroll [&_li]:mx-8 [&_img]:max-w-none  w-max">This website is designed to showcase the application's features and layout. The information provided is intended to illustrate potential functionalities and user interactions</div>
+          </footer> 
         </div>
+      
       </Fade>
+      
     </div>
   );
 };
