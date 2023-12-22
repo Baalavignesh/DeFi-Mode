@@ -1,19 +1,55 @@
-import { useEffect } from "react";
+import { useEffect,useState } from "react";
 import { useDispatch } from "react-redux";
-import { setTokens } from "../../features/auth/authSlice";
 import { useNavigate } from "react-router-dom";
-import { Fade, Grow, LinearProgress } from "@mui/material";
+import { Fade, Grow } from "@mui/material";
 import Header from "../../components/Header";
 import {allCoins, newCoins} from "../../constants/coin_info";
+import {ethers} from "ethers";
+import abi from '../../constants/abi.json'
+import { useSDK } from "@metamask/sdk-react";
+
+const contractAddress = "0x1EcEEcB17762FaaCf67276b52B00c456017762e3";
+
+
 const Dashboard = () => {
-  const dispatch = useDispatch();
   const navigate = useNavigate();
+  const [currentAd, setCurrentAd] = useState("Hello World!");
+ const [currentBid, setCurrentBid] = useState(0);
+ const [advertiser, setAdvertiser] = useState("0x0");
+ const [newAd, setNewAd] = useState("");
+ const [bidAmount, setBidAmount] = useState("");
+ const [provider, setProvider] = useState<any>(null);
+ const [status, setStatus] = useState("");
+ const contract = new ethers.Contract(contractAddress, abi, provider);
 
-  useEffect(() => {}, []);
+ async function fetchCurrentAd() {
+  try {
+      const provider = window.ethereum ? new ethers.BrowserProvider(window.ethereum) : null;
+      console.log(provider)
+      const adData = await contract.getAllCampaigns();
+      
+      setCurrentAd(adData[0]);
+      setAdvertiser(adData[1]);
+      setCurrentBid(parseFloat(ethers.formatEther(adData[2])));
+      console.log(adData[0]);
+  } catch (error) {
+    console.error('Error fetching current ad:', error);
+  }
+}
 
-  useEffect(() => {
-    console.log("dashboard screen");
-  }, []);
+useEffect(() => {
+  if (typeof window !== "undefined") {
+    if (window.ethereum) {
+      setProvider(new ethers.BrowserProvider(window.ethereum));
+      // getCurrentAd()
+    } else {
+      console.error("Please install MetaMask!");
+    }
+  }
+}, []);
+useEffect(() => {
+  fetchCurrentAd();
+}, []);
 
   return (
     <div className="min-h-screen">
@@ -44,6 +80,7 @@ const Dashboard = () => {
 
                 return (
                   <Grow
+                    key = {coin.name}
                     in={true}
                     style={{
                       transformOrigin: "0 0 0",
